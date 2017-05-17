@@ -1,0 +1,56 @@
+.details-page {
+
+  .chart {
+    margin-left: -10px;
+
+    .c3-line-Latency {
+      stroke-width: 1px;
+    }
+
+    .c3 .c3-axis-x path, .c3 .c3-axis-x line {
+      stroke: #c2c2c2;
+    }
+
+    .c3 .c3-axis-y path, .c3 .c3-axis-y line {
+      stroke: #c2c2c2;
+    }
+
+    .c3-region.region-outage {
+      fill: #d9534f;
+    }
+
+    .c3-region.region-latency-warning {
+      fill: #c2c2c2;
+    }
+
+    .c3-ygrid-line.threshold line {
+      stroke: #c2c2c2;
+      stroke-width: 1px;
+    }
+
+    .c3-ygrid-line.threshold text {
+      fill: gray;
+      font-size: 1.2em;
+    }
+
+    span {
+      .caption {
+        color: #c2c2c2;
+        font-size: 0.9em;
+      }
+      margin-right: 10px;
+      font-size: 1.1em;
+    }
+
+    /*-- Tooltip overrides --*/
+    .c3-tooltip tr {
+      border: 1px solid #c2c2c2;
+      border-radius: 4px;
+    }
+
+    .c3-tooltip th {
+      background-color: #333;
+    }
+
+  }
+}

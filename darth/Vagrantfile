@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.provider "virtualbox" do |v|
+     v.name = "darth"
+     v.memory = 2048
+     v.cpus = 2
+     v.customize ["modifyvm", :id, "--uartmode1", "disconnected" ]
+
+  end
+  config.vm.hostname = "darth"
+
+  config.vm.network "private_network", ip: "192.168.33.2"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.provision "file", source: "watchmen", destination: "/home/ubuntu/watchmen"
+  config.vm.provision "file", source: "../db-data", destination: "/home/ubuntu/"
+
+
+  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "registry.sh"
+end

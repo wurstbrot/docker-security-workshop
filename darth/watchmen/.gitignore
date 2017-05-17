@@ -1,0 +1,9 @@
+logs/
+.monitor
+.DS_Store
+node_modules/
+*.rdb
+.idea/
+webserver/public/bower_components/
+terraform/digital-ocean/*.tfstate
+terraform/digital-ocean/*.tfstate.backup

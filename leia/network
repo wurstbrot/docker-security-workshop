@@ -1,0 +1,9 @@
+apt-get install -y wondershaper
+wondershaper enp0s8 2048 2048
+
+docker pull alkacon/opencms-docker:10.5.1
+
+cd /tmp/network-files
+docker build -t special .
+
+cp /tmp/network-files/e-web-blaster.bash /home/ubuntu

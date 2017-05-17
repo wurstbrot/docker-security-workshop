@@ -1,0 +1,60 @@
+cd wordpress 
+docker-compose rm
+
+cd /vagrant/docker-killer-files
+docker build -t weapons .
+
+
+function generateDockerStart {
+echo "sudo docker run \
+  --rm -ti \
+  -v /:/rootfs \
+  weapons \
+  $1" > $1.bash
+chmod 755 $1.bash
+}
+
+function generateDockerStartPrivileged {
+echo "sudo docker run \
+  --rm -ti \
+  --privileged \
+  -v /:/rootfs \
+  weapons \
+  $1" > $1.bash
+chmod 755 $1.bash
+}
+
+
+cd /home/ubuntu
+generateDockerStartPrivileged lightsaber
+generateDockerStart cryoBanGrenade
+generateDockerStart smokeGrenade
+generateDockerStart flashBangGrenade
+generateDockerStart thermalDetonator
+generateDockerStart e-11-blaster
+generateDockerStart fragmentationGrenade
+
+
+
+
+echo "sudo docker run \
+  --rm -ti \
+  --privileged \
+  -v /:/rootfs \
+  weapons \
+  cryoBanGrenade" > cryoBanGrenade2.bash
+chmod 755 cryoBanGrenade2.bash
+
+
+#rm -R .
+
+
+#docker run --rm --volumes-from security -v `pwd`/backup:/backup  busybox cp /forkbomb /backup
+
+
+mkdir /tmp/dst
+cd /tmp/dst
+echo "FROM ubuntu:latest" > Dockerfile
+echo "RUN apt-get update && apt-get install -y net-tools inetutils-ping" >> Dockerfile
+docker build -t ubuntu-net .
+ 

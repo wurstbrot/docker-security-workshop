@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
+  config.vm.provision "file", source: "docker-killer-files", destination: "/tmp/docker-killer-files"
+  config.vm.provision "file", source: "network-files", destination: "/tmp/network-files"
+  config.vm.provision "file", source: "poisoned-image", destination: "/tmp/poisoned-image"
+  config.vm.provision "file", source: "seccomp-profiles", destination: "/home/ubuntu/seccomp-profiles"
+  config.vm.provision "file", source: "../db-data", destination: "/home/ubuntu/db-data"
+  config.vm.provision "file", source: "wildfly", destination: "/home/ubuntu/wildfly"
+  config.vm.provision "file", source: "testNetwork.bash", destination: "/home/ubuntu/testNetwork.bash"
+  config.vm.provision "file", source: "bowCaster.bash", destination: "/home/ubuntu/bowCaster.bash"
+  config.vm.provision "file", source: "strace-simplified.bash", destination: "/home/ubuntu/strace-simplified.bash"
+  config.vm.provision "file", source: "cpu-node", destination: "/tmp/"
+  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "poisoned-image/docker-backdoor.bash"
+  config.vm.provision :shell, path: "cpu-node/bootstrap.bash"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider "virtualbox" do |v|
+	v.name = "leia"
+	v.memory = 2084
+	v.cpus=1
+	v.customize ["modifyvm", :id, "--uartmode1", "disconnected" ]
+  #	v.customize ["modifyvm", :id, "--cpuexecutioncap", "8"]
+  end
+  config.vm.hostname="leia"
+end
