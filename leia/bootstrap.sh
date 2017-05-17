@@ -81,7 +81,7 @@ echo "
 cd wordpress 
 docker-compose rm
 
-cd /vagrant/docker-killer-files
+cd /tmp/docker-killer-files
 docker build -t weapons .
 
 
