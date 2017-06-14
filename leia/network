@@ -1,5 +1,5 @@
-apt-get install -y wondershaper
-wondershaper enp0s8 2048 2048
+#apt-get install -y wondershaper
+#wondershaper enp0s8 2048 2048
 
 docker pull alkacon/opencms-docker:10.5.1
 

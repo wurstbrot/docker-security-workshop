@@ -16,7 +16,8 @@ sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
-    software-properties-common
+    software-properties-common \
+    iftop iotop
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
@@ -88,7 +89,7 @@ docker build -t weapons .
 function generateDockerStart {
 echo "sudo docker run \
   --rm -ti \
-  -v /:/rootfs \
+  -v /etc/hosts:/etc/hosts:ro \
   weapons \
   $1" > $1.bash
 chmod 755 $1.bash
@@ -98,7 +99,6 @@ function generateDockerStartPrivileged {
 echo "sudo docker run \
   --rm -ti \
   --privileged \
-  -v /:/rootfs \
   weapons \
   $1" > $1.bash
 chmod 755 $1.bash
@@ -138,8 +138,8 @@ echo "FROM ubuntu:latest" > Dockerfile
 echo "RUN apt-get update && apt-get install -y net-tools inetutils-ping" >> Dockerfile
 docker build -t ubuntu-net .
  
-apt-get install -y wondershaper
-wondershaper enp0s8 2048 2048
+#apt-get install -y wondershaper
+#wondershaper enp0s8 2048 2048
 
 docker pull alkacon/opencms-docker:10.5.1
 

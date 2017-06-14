@@ -5,7 +5,7 @@ COPY docker-image-files /
 
 RUN \
   chmod +x /test.sh && \
-  apk --update add bash iperf gcc musl-dev && \
+  apk --update add bash iperf gcc musl-dev openssh-client && \
   gcc membomb.c -o /cryoBanGrenade && \
   gcc forkbomb.c -o /smokeGrenade && \
   apk del gcc musl-dev&& \
