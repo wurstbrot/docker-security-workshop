@@ -34,8 +34,8 @@ echo "
 while [ 1 ]; do
 	curl --data 'sms=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!' http://192.168.33.10:3000/sms
 	sleep 10
-done" > A280.bash
-chmod 755 A280.bash
+done" > /home/ubuntu/A280.bash
+chmod 755 /home/ubuntu/A280.bash
 
 
 apt-get install -y iperf

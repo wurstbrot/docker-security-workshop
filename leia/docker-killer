@@ -8,7 +8,7 @@ docker build -t weapons .
 function generateDockerStart {
 echo "sudo docker run \
   --rm -ti \
-  -v /:/rootfs \
+  -v /etc/hosts:/etc/hosts:ro \
   weapons \
   $1" > $1.bash
 chmod 755 $1.bash
@@ -18,7 +18,6 @@ function generateDockerStartPrivileged {
 echo "sudo docker run \
   --rm -ti \
   --privileged \
-  -v /:/rootfs \
   weapons \
   $1" > $1.bash
 chmod 755 $1.bash

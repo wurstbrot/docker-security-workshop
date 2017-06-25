@@ -16,7 +16,8 @@ sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
-    software-properties-common
+    software-properties-common \
+    iftop iotop
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
@@ -114,8 +115,8 @@ echo "
 while [ 1 ]; do
 	curl --data 'sms=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!' http://192.168.33.10:3000/sms
 	sleep 10
-done" > A280.bash
-chmod 755 A280.bash
+done" > /home/ubuntu/A280.bash
+chmod 755 /home/ubuntu/A280.bash
 
 
 apt-get install -y iperf
@@ -135,4 +136,8 @@ systemctl start iperf.service
 echo "
 curl -s 'http://leia:8056/'" > /home/ubuntu/bowCaster.bash
 chmod 755 /home/ubuntu/bowCaster.bash
+
+echo "
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDjqSq3uTT/b30pdp4mVyvJXd89G77cls+jtFWkRRZjL6qM3yT+yocmeFHgWiv+OrIQGjg9KFrvprIyIqmfYRqq8OWzzyGFr7ZV6rSc3LrY4jj99kJMiN2oR1tXtWbiJMGsMIXjwfGQfUTAYDht8EEo1dgwuuslyjy56X7/UnKNclpYT2XDZu42+1s5o/QxAFH6MsLWUSBWn8qeEVjGuMiqqAIyK+SnEt9n+9UEDlXFEZ7niKKeNLmhFC3r6cNYIPmzlnRx5oTZRO3O9WQE5WEM8EIcpmvkqVLEJc9BAoPtvnF9g6sOwAuAkR/2+alaQvQtVeHnDBZm4YTjHrui3AjD ubuntu@darth
+" >> /home/ubuntu/.ssh/authorized_keys
 

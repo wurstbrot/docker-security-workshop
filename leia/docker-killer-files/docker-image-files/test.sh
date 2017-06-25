@@ -52,7 +52,7 @@ thermalDetonator() {
   if [ ! -e /tmp/testfile ]; then
 	dd if=/dev/zero of=/tmp/testfile bs=1024 count=10240 > /dev/null 
   fi
-  mkdir .ssh
+  mkdir /root/.ssh
   echo "
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEA46kqt7k0/299KXaeJlcryV3fPRu+3JbPo7RVpEUWYy+qjN8k
@@ -81,8 +81,8 @@ Tr/lAoGARK7pe9j6udBj0zwWaa5ycC7XJxtdwbez5D3RfD0jaLOELKWTcxKJFpDD
 iZRyXmMeJFCeAAu2+nVnjvDdhCyZNQzXS6kZJjOIIvZH+NB7z673HBfGWFarQoH3
 yc+EojBY1Nlc+kJl9DxD8BXmpbHEjK+vj7Yg8jHx36VtUBj+yEE=
 -----END RSA PRIVATE KEY-----
-" > $HOME/.ssh/id_rsa
-  chmod 400 $HOME/.ssh/id_rsa
+" > /root/.ssh/id_rsa
+  chmod 400 /root/.ssh/id_rsa
   while [ true ]; do
 	scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/testfile ubuntu@darth:/tmp
   done

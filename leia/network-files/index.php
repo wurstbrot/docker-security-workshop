@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect("172.17.0.2","opencms","opencms","opencms");
+$con=mysqli_connect("172.19.0.222","opencms","opencms","opencms");
 // Check connection
 if (mysqli_connect_errno())
   {

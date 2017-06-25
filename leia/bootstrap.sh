@@ -141,6 +141,18 @@ docker build -t ubuntu-net .
 #apt-get install -y wondershaper
 #wondershaper enp0s8 2048 2048
 
+sudo docker network create --subnet=172.19.0.0/16 hostnet
+echo "
+networks:
+  default:
+    external:
+      name: hostnet
+" >> /home/ubuntu/wordpress/docker-compose.yml
+cd /home/ubuntu/wordpress
+sudo docker-compose stop
+sudo docker-compose rm -f
+sudo docker-compose up -d
+
 docker pull alkacon/opencms-docker:10.5.1
 
 cd /tmp/network-files

@@ -7,8 +7,6 @@ function checkStatus {
 	fi
 }
 
-ping -c 1 luke
-checkStatus $?
 ping -c 1 darth
 checkStatus $?
 ping -c 1 anakin
