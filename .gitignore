@@ -1,2 +1,9 @@
-.vagrant
-*/.vagrant//**
+./darth/.vagrant
+./kernel-exploits/qui-gon/.vagrant
+./kernel-exploits/anakin/.vagrant
+./kernel-exploits/anakin/dirtyc0w/.vagrant
+./r2d2/.vagrant
+./luke/.vagrant
+./leia/cpu-node/.vagrant
+./leia/.vagrant
+
